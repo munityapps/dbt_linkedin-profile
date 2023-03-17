@@ -14,9 +14,9 @@ SELECT
       COALESCE("{{ var("table_prefix") }}_contacts_properties".firstname, '') ||
       COALESCE("{{ var("table_prefix") }}_contacts_properties".lastname, '') ||
       'contact' ||
-      'hubspot_crm'
+      'hubspot'
     )  as id,
-    'hubspot_crm' as source,
+    'hubspot' as source,
     '{{ var("integration_id") }}'::uuid  as integration_id,
     _airbyte_raw_{{ var("table_prefix") }}_contacts._airbyte_data as last_raw_data, 
     '{{ var("timestamp") }}' as sync_timestamp,
