@@ -21,7 +21,8 @@ SELECT
     "{{ var("table_prefix") }}_contact_lists".name as name,
     "{{ var("table_prefix") }}_contact_lists".listtype as type,
     "{{ var("table_prefix") }}_contact_lists".archived::boolean as deleted,
-    "{{ var("table_prefix") }}_contact_lists".metadata->>'size' as size,
+    ("{{ var("table_prefix") }}_contact_lists".metadata->>'size')::bigint as size,
+    -- NULL::bigint as size,
     NULL as campaign_id
 FROM "{{ var("table_prefix") }}_contact_lists"
 LEFT JOIN _airbyte_raw_{{ var("table_prefix") }}_contact_lists
